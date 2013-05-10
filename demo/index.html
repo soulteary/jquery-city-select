@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>省市下拉联动插件 @soulteary</title>
+    <style>
+
+    </style>
+    <link rel="stylesheet" href="extra/style.css"/>
+    <script src="extra/jquery.js"></script>
+    <script src="extra/jquery.city.select.js"></script>
+</head>
+<body>
+<div id="warp">
+    <select id="province">
+        <option value="载入中">载入中</option>
+    </select>
+    <select id="city">
+        <option value="载入中">载入中</option>
+    </select>
+</div>
+
+<div id="warp2">
+    <select id="all">
+        <option value="载入中">载入中</option>
+    </select>
+</div>
+
+<script type="text/javascript">
+
+    //插件调用代码
+    ;
+    $(function () {
+
+        var data = [
+            {'name': '北京市', id: 100000, children: [
+                {'name': '海淀区', id: 100003},
+                {'name': '西城区', id: 100002},
+                {'name': '东城区', id: 100001}
+            ]},
+            {'name': '天津市', id: 300000, children: [
+                {'name': '北辰区', id: 100003},
+                {'name': '红桥区', id: 100002},
+                {'name': '河西区', id: 100001}
+            ]}
+        ];
+
+        $('#province, #city').citylist({data:data});
+
+        $('#all').citylist({data:data, id:'id', children:'children',name:'name',metaTag:'name'});
+    });
+
+
+</script>
+</body>
+</html>
