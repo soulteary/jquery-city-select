@@ -6,7 +6,6 @@ var path = require('path');
 var rename = require("gulp-rename");
 var dirSync = require('gulp-directory-sync');
 var uglify = require('gulp-uglify');
-var mochaPhantomJS = require('gulp-mocha-phantomjs');
 
 gulp.task('default', ['build']);
 gulp.task("build", ["script:build"], function () {});

@@ -15,7 +15,7 @@
 
     var errorMSG = "jQuery.City.Select Need jQuery.";
     if (typeof define === "function" && (define.amd || window.seajs)) {
-        define("jquery.city.select", [], function (require, module, exports) {
+        define("jquery.city.select", [], function (require) {
             var jQ = require('jquery');
             if (!jQ) {
                 throw errorMSG;
@@ -46,14 +46,13 @@
 
             var target = $(this);
             var hasSelected = ' selected="selected"';
-            var html = [];
 
             switch (target.length) {
                 case 1:
                     singleBox(target, params);
                     break;
                 case 2:
-                    multipleBox(target,params)
+                    multipleBox(target, params);
                     break;
                 default :
                     // 参数不存在或者不匹配可接受数量时

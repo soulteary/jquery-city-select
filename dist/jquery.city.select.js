@@ -2,7 +2,7 @@
     'use strict';
     var errorMSG = 'jQuery.City.Select Need jQuery.';
     if (typeof define === 'function' && (define.amd || window.seajs)) {
-        define('jquery.city.select', [], function (require, module, exports) {
+        define('jquery.city.select', [], function (require) {
             var jQ = require('jquery');
             if (!jQ) {
                 throw errorMSG;
@@ -30,7 +30,6 @@
             }, params);
             var target = $(this);
             var hasSelected = ' selected="selected"';
-            var html = [];
             switch (target.length) {
             case 1:
                 singleBox(target, params);
