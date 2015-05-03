@@ -3,13 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>省市下拉联动插件 @soulteary</title>
-    <style>
-
-    </style>
-    <link rel="stylesheet" href="extra/css/bootstrap.min.css"/>
-    <script src="extra/jquery.js"></script>
-    <script src="extra/jquery.city.select.js"></script>
-    <script src="extra/prettify.js"></script>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css"/>
+    <script src="assets/js/jquery-1.11.3.min.js"></script>
+    <script src="assets/dist/jquery.city.select.js"></script>
+    <script src="assets/js/prettify.js"></script>
 </head>
 <body>
 
@@ -46,7 +43,7 @@
             <hr />
             <h3>预选某个属性:</h3>
             <div class="control-group">
-                <label class="control-label" for="province">省份</label>
+                <label class="control-label" for="pre-province">省份</label>
                 <div class="controls">
                     <select id="pre-province">
                         <option value="载入中">载入中</option>
@@ -54,7 +51,7 @@
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="city">城市</label>
+                <label class="control-label" for="pre-city">城市</label>
                 <div class="controls">
                     <select id="pre-city">
                         <option value="载入中">载入中</option>
@@ -64,7 +61,7 @@
             <hr />
             <h3>预选某个属性:</h3>
             <div class="control-group">
-                <label class="control-label" for="province">地区</label>
+                <label class="control-label" for="pre-all">地区</label>
                 <div class="controls">
                     <select id="pre-all">
                         <option value="载入中">载入中</option>
@@ -72,8 +69,8 @@
                 </div>
             </div>
         </form>
-<pre class="prettyprint linenums">$('#pre-province, #pre-city').citylist({data:data,id:'id',children:'citys',name:'name',metaTag:'name',selected:[14,1401]});
-$('#pre-all').citylist({data:data,id:'id',children:'citys',name:'name',metaTag:'name',idVal:true,selected:1401});</pre>
+<pre class="prettyprint linenums">$('#pre-province, #pre-city').citylist({data:data,id:'id',children:'cities',name:'name',metaTag:'name',selected:[14,1401]});
+$('#pre-all').citylist({data:data,id:'id',children:'cities',name:'name',metaTag:'name',idVal:true,selected:1401});</pre>
     </div>
 </div>
 
@@ -86,7 +83,7 @@ $('#pre-all').citylist({data:data,id:'id',children:'citys',name:'name',metaTag:'
     $(function () {
 
         var data = [
-            {id: 11, name: '北京', citys: [
+            {id: 11, name: '北京', cities: [
                 {id: 1101, name: '东城区'},
                 {id: 1102, name: '西城区'},
                 {id: 1108, name: '海淀区'},
@@ -104,7 +101,7 @@ $('#pre-all').citylist({data:data,id:'id',children:'citys',name:'name',metaTag:'
                 {id: 1128, name: '密云县'},
                 {id: 1129, name: '延庆县'}
             ]},
-            {id: 12, name: '天津', citys: [
+            {id: 12, name: '天津', cities: [
                 {id: 1201, name: '和平区'},
                 {id: 1202, name: '河东区'},
                 {id: 1203, name: '河西区'},
@@ -124,7 +121,7 @@ $('#pre-all').citylist({data:data,id:'id',children:'citys',name:'name',metaTag:'
                 {id: 1223, name: '静海县'},
                 {id: 1225, name: '蓟县'}
             ]},
-            {id: 13, name: '河北', citys: [
+            {id: 13, name: '河北', cities: [
                 {id: 1301, name: '石家庄'},
                 {id: 1302, name: '唐山'},
                 {id: 1303, name: '秦皇岛'},
@@ -137,7 +134,7 @@ $('#pre-all').citylist({data:data,id:'id',children:'citys',name:'name',metaTag:'
                 {id: 1310, name: '廊坊'},
                 {id: 1311, name: '衡水'}
             ]},
-            {id: 14, name: '山西', citys: [
+            {id: 14, name: '山西', cities: [
                 {id: 1401, name: '太原'},
                 {id: 1402, name: '大同'},
                 {id: 1403, name: '阳泉'},
@@ -150,7 +147,7 @@ $('#pre-all').citylist({data:data,id:'id',children:'citys',name:'name',metaTag:'
                 {id: 1410, name: '临汾'},
                 {id: 1423, name: '吕梁'}
             ]},
-            {id: 15, name: '内蒙古', citys: [
+            {id: 15, name: '内蒙古', cities: [
                 {id: 1501, name: '呼和浩特'},
                 {id: 1502, name: '包头'},
                 {id: 1503, name: '乌海'},
@@ -164,7 +161,7 @@ $('#pre-all').citylist({data:data,id:'id',children:'citys',name:'name',metaTag:'
                 {id: 1528, name: '巴彦淖尔盟'},
                 {id: 1529, name: '阿拉善盟'}
             ]},
-            {id: 21, name: '辽宁', citys: [
+            {id: 21, name: '辽宁', cities: [
                 {id: 2101, name: '沈阳'},
                 {id: 2102, name: '大连'},
                 {id: 2103, name: '鞍山'},
@@ -180,7 +177,7 @@ $('#pre-all').citylist({data:data,id:'id',children:'citys',name:'name',metaTag:'
                 {id: 2113, name: '朝阳'},
                 {id: 2114, name: '葫芦岛'}
             ]},
-            {id: 22, name: '吉林', citys: [
+            {id: 22, name: '吉林', cities: [
                 {id: 2201, name: '长春'},
                 {id: 2202, name: '吉林'},
                 {id: 2203, name: '四平'},
@@ -191,7 +188,7 @@ $('#pre-all').citylist({data:data,id:'id',children:'citys',name:'name',metaTag:'
                 {id: 2208, name: '白城'},
                 {id: 2224, name: '延边朝鲜族自治州'}
             ]},
-            {id: 23, name: '黑龙江', citys: [
+            {id: 23, name: '黑龙江', cities: [
                 {id: 2301, name: '哈尔滨'},
                 {id: 2302, name: '齐齐哈尔'},
                 {id: 2303, name: '鸡西'},
@@ -206,7 +203,7 @@ $('#pre-all').citylist({data:data,id:'id',children:'citys',name:'name',metaTag:'
                 {id: 2312, name: '绥化'},
                 {id: 2327, name: '大兴安岭'}
             ]},
-            {id: 31, name: '上海', citys: [
+            {id: 31, name: '上海', cities: [
                 {id: 3101, name: '黄浦区'},
                 {id: 3103, name: '卢湾区'},
                 {id: 3104, name: '徐汇区'},
@@ -227,7 +224,7 @@ $('#pre-all').citylist({data:data,id:'id',children:'citys',name:'name',metaTag:'
                 {id: 3120, name: '奉贤区'},
                 {id: 3130, name: '崇明县'}
             ]},
-            {id: 32, name: '江苏', citys: [
+            {id: 32, name: '江苏', cities: [
                 {id: 3201, name: '南京'},
                 {id: 3202, name: '无锡'},
                 {id: 3203, name: '徐州'},
@@ -242,7 +239,7 @@ $('#pre-all').citylist({data:data,id:'id',children:'citys',name:'name',metaTag:'
                 {id: 3212, name: '泰州'},
                 {id: 3213, name: '宿迁'}
             ]},
-            {id: 33, name: '浙江', citys: [
+            {id: 33, name: '浙江', cities: [
                 {id: 3301, name: '杭州'},
                 {id: 3302, name: '宁波'},
                 {id: 3303, name: '温州'},
@@ -255,7 +252,7 @@ $('#pre-all').citylist({data:data,id:'id',children:'citys',name:'name',metaTag:'
                 {id: 3310, name: '台州'},
                 {id: 3311, name: '丽水'}
             ]},
-            {id: 34, name: '安徽', citys: [
+            {id: 34, name: '安徽', cities: [
                 {id: 3401, name: '合肥'},
                 {id: 3402, name: '芜湖'},
                 {id: 3403, name: '蚌埠'},
@@ -274,7 +271,7 @@ $('#pre-all').citylist({data:data,id:'id',children:'citys',name:'name',metaTag:'
                 {id: 3417, name: '池州'},
                 {id: 3418, name: '宣城'}
             ]},
-            {id: 35, name: '福建', citys: [
+            {id: 35, name: '福建', cities: [
                 {id: 3501, name: '福州'},
                 {id: 3502, name: '厦门'},
                 {id: 3503, name: '莆田'},
@@ -285,7 +282,7 @@ $('#pre-all').citylist({data:data,id:'id',children:'citys',name:'name',metaTag:'
                 {id: 3508, name: '龙岩'},
                 {id: 3509, name: '宁德'}
             ]},
-            {id: 36, name: '江西', citys: [
+            {id: 36, name: '江西', cities: [
                 {id: 3601, name: '南昌'},
                 {id: 3602, name: '景德镇'},
                 {id: 3603, name: '萍乡'},
@@ -298,7 +295,7 @@ $('#pre-all').citylist({data:data,id:'id',children:'citys',name:'name',metaTag:'
                 {id: 3610, name: '抚州'},
                 {id: 3611, name: '上饶'}
             ]},
-            {id: 37, name: '山东', citys: [
+            {id: 37, name: '山东', cities: [
                 {id: 3701, name: '济南'},
                 {id: 3702, name: '青岛'},
                 {id: 3703, name: '淄博'},
@@ -317,7 +314,7 @@ $('#pre-all').citylist({data:data,id:'id',children:'citys',name:'name',metaTag:'
                 {id: 3716, name: '滨州'},
                 {id: 3717, name: '菏泽'}
             ]},
-            {id: 41, name: '河南', citys: [
+            {id: 41, name: '河南', cities: [
                 {id: 4101, name: '郑州'},
                 {id: 4102, name: '开封'},
                 {id: 4103, name: '洛阳'},
@@ -337,7 +334,7 @@ $('#pre-all').citylist({data:data,id:'id',children:'citys',name:'name',metaTag:'
                 {id: 4117, name: '驻马店'},
                 {id: 4118, name: '济源'}
             ]},
-            {id: 42, name: '湖北', citys: [
+            {id: 42, name: '湖北', cities: [
                 {id: 4201, name: '武汉'},
                 {id: 4202, name: '黄石'},
                 {id: 4203, name: '十堰'},
@@ -352,7 +349,7 @@ $('#pre-all').citylist({data:data,id:'id',children:'citys',name:'name',metaTag:'
                 {id: 4213, name: '随州'},
                 {id: 4228, name: '恩施土家族苗族自治州'}
             ]},
-            {id: 43, name: '湖南', citys: [
+            {id: 43, name: '湖南', cities: [
                 {id: 4301, name: '长沙'},
                 {id: 4302, name: '株洲'},
                 {id: 4303, name: '湘潭'},
@@ -368,7 +365,7 @@ $('#pre-all').citylist({data:data,id:'id',children:'citys',name:'name',metaTag:'
                 {id: 4313, name: '娄底'},
                 {id: 4331, name: '湘西土家族苗族自治州'}
             ]},
-            {id: 44, name: '广东', citys: [
+            {id: 44, name: '广东', cities: [
                 {id: 4401, name: '广州'},
                 {id: 4402, name: '韶关'},
                 {id: 4403, name: '深圳'},
@@ -391,7 +388,7 @@ $('#pre-all').citylist({data:data,id:'id',children:'citys',name:'name',metaTag:'
                 {id: 4452, name: '揭阳'},
                 {id: 4453, name: '云浮'}
             ]},
-            {id: 45, name: '广西', citys: [
+            {id: 45, name: '广西', cities: [
                 {id: 4501, name: '南宁'},
                 {id: 4502, name: '柳州'},
                 {id: 4503, name: '桂林'},
@@ -407,12 +404,12 @@ $('#pre-all').citylist({data:data,id:'id',children:'citys',name:'name',metaTag:'
                 {id: 4521, name: '南宁'},
                 {id: 4522, name: '柳州'}
             ]},
-            {id: 46, name: '海南', citys: [
+            {id: 46, name: '海南', cities: [
                 {id: 4601, name: '海口'},
                 {id: 4602, name: '三亚'},
                 {id: 4690, name: '其他'}
             ]},
-            {id: 50, name: '重庆', citys: [
+            {id: 50, name: '重庆', cities: [
                 {id: 5001, name: '万州区'},
                 {id: 5002, name: '涪陵区'},
                 {id: 5003, name: '渝中区'},
@@ -454,7 +451,7 @@ $('#pre-all').citylist({data:data,id:'id',children:'citys',name:'name',metaTag:'
                 {id: 5083, name: '永川区'},
                 {id: 5084, name: '南川市'}
             ]},
-            {id: 51, name: '四川', citys: [
+            {id: 51, name: '四川', cities: [
                 {id: 5101, name: '成都'},
                 {id: 5103, name: '自贡'},
                 {id: 5104, name: '攀枝花'},
@@ -477,7 +474,7 @@ $('#pre-all').citylist({data:data,id:'id',children:'citys',name:'name',metaTag:'
                 {id: 5133, name: '甘孜'},
                 {id: 5134, name: '凉山'}
             ]},
-            {id: 52, name: '贵州', citys: [
+            {id: 52, name: '贵州', cities: [
                 {id: 5201, name: '贵阳'},
                 {id: 5202, name: '六盘水'},
                 {id: 5203, name: '遵义'},
@@ -488,7 +485,7 @@ $('#pre-all').citylist({data:data,id:'id',children:'citys',name:'name',metaTag:'
                 {id: 5226, name: '黔东南'},
                 {id: 5227, name: '黔南'}
             ]},
-            {id: 53, name: '云南', citys: [
+            {id: 53, name: '云南', cities: [
                 {id: 5301, name: '昆明'},
                 {id: 5303, name: '曲靖'},
                 {id: 5304, name: '玉溪'},
@@ -506,7 +503,7 @@ $('#pre-all').citylist({data:data,id:'id',children:'citys',name:'name',metaTag:'
                 {id: 5334, name: '迪庆'},
                 {id: 5335, name: '临沧'}
             ]},
-            {id: 54, name: '西藏', citys: [
+            {id: 54, name: '西藏', cities: [
                 {id: 5401, name: '拉萨'},
                 {id: 5421, name: '昌都'},
                 {id: 5422, name: '山南'},
@@ -515,7 +512,7 @@ $('#pre-all').citylist({data:data,id:'id',children:'citys',name:'name',metaTag:'
                 {id: 5425, name: '阿里'},
                 {id: 5426, name: '林芝'}
             ]},
-            {id: 61, name: '陕西', citys: [
+            {id: 61, name: '陕西', cities: [
                 {id: 6101, name: '西安'},
                 {id: 6102, name: '铜川'},
                 {id: 6103, name: '宝鸡'},
@@ -527,7 +524,7 @@ $('#pre-all').citylist({data:data,id:'id',children:'citys',name:'name',metaTag:'
                 {id: 6109, name: '安康'},
                 {id: 6110, name: '商洛'}
             ]},
-            {id: 62, name: '甘肃', citys: [
+            {id: 62, name: '甘肃', cities: [
                 {id: 6201, name: '兰州'},
                 {id: 6202, name: '嘉峪关'},
                 {id: 6203, name: '金昌'},
@@ -543,7 +540,7 @@ $('#pre-all').citylist({data:data,id:'id',children:'citys',name:'name',metaTag:'
                 {id: 6229, name: '临夏'},
                 {id: 6230, name: '甘南'}
             ]},
-            {id: 63, name: '青海', citys: [
+            {id: 63, name: '青海', cities: [
                 {id: 6301, name: '西宁'},
                 {id: 6321, name: '海东'},
                 {id: 6322, name: '海北'},
@@ -553,13 +550,13 @@ $('#pre-all').citylist({data:data,id:'id',children:'citys',name:'name',metaTag:'
                 {id: 6327, name: '玉树'},
                 {id: 6328, name: '海西'}
             ]},
-            {id: 64, name: '宁夏', citys: [
+            {id: 64, name: '宁夏', cities: [
                 {id: 6401, name: '银川'},
                 {id: 6402, name: '石嘴山'},
                 {id: 6403, name: '吴忠'},
                 {id: 6404, name: '固原'}
             ]},
-            {id: 65, name: '新疆', citys: [
+            {id: 65, name: '新疆', cities: [
                 {id: 6501, name: '乌鲁木齐'},
                 {id: 6502, name: '克拉玛依'},
                 {id: 6521, name: '吐鲁番'},
@@ -575,21 +572,21 @@ $('#pre-all').citylist({data:data,id:'id',children:'citys',name:'name',metaTag:'
                 {id: 6542, name: '塔城'},
                 {id: 6543, name: '阿勒泰'}
             ]},
-            {id: 71, name: '台湾', citys: [
+            {id: 71, name: '台湾', cities: [
                 {id: 7101, name: '台北'},
                 {id: 7102, name: '高雄'},
                 {id: 7190, name: '其他'}
             ]},
-            {id: 81, name: '香港', citys: [
+            {id: 81, name: '香港', cities: [
                 {id: 8101, name: '香港'}
             ]},
-            {id: 82, name: '澳门', citys: [
+            {id: 82, name: '澳门', cities: [
                 {id: 8201, name: '澳门'}
             ]},
-            {id: 100, name: '其他', citys: [
+            {id: 100, name: '其他', cities: [
                 {id: 10001, name: '其他'}
             ]},
-            {id: 400, name: '海外', citys: [
+            {id: 400, name: '海外', cities: [
                 {id: 40001, name: '美国'},
                 {id: 40002, name: '英国'},
                 {id: 40003, name: '法国'},
@@ -609,20 +606,17 @@ $('#pre-all').citylist({data:data,id:'id',children:'citys',name:'name',metaTag:'
             ]}
         ];
 
-        $('#province, #city').citylist({data:data, id:'id', children:'citys',name:'name',metaTag:'name'});
+        $('#province, #city').citylist({data:data, id:'id', children:'cities',name:'name',metaTag:'name'});
 
-        $('#all').citylist({data:data, id:'id', children:'citys',name:'name',metaTag:'name'});
+        $('#all').citylist({data:data, id:'id', children:'cities',name:'name',metaTag:'name'});
 
-        $('#pre-province, #pre-city').citylist({data:data, id:'id', children:'citys',name:'name',metaTag:'name',selected:[14,1401]});
+        $('#pre-province, #pre-city').citylist({data:data, id:'id', children:'cities',name:'name',metaTag:'name',selected:[14,1401]});
 
-
-        $('#pre-all').citylist({data:data, id:'id', children:'citys',name:'name',metaTag:'name',idVal:true,selected:1401});
+        $('#pre-all').citylist({data:data, id:'id', children:'cities',name:'name',metaTag:'name',idVal:true,selected:1401});
 
         window.prettyPrint && prettyPrint();
 
     });
-
-
 </script>
 </body>
 </html>
