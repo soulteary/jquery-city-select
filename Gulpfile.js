@@ -12,8 +12,7 @@ var replace = require('gulp-replace');
 var wrap = require("gulp-wrap");
 var rjs = require('gulp-requirejs');
 
-
-gulp.task("default", ["demo:sync"], function () {});
+gulp.task("default", ["clean:tmp"], function () {});
 
 gulp.task("scripts:make-amd", function () {
     return gulp.src("./src/jquery.city.select.js")
@@ -55,3 +54,8 @@ gulp.task("test:mocha", ["test:sync"], function () {
         .src("./tests/phantomjs.html")
         .pipe(mochaPhantomJS());
 });
+
+gulp.task("clean:tmp", ["demo:sync"], function () {
+    return gulp.src("./tmp/**", {read: false})
+        .pipe(rm({async: false}))
+})

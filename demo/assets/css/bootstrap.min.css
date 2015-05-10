@@ -84,3 +84,7 @@ ol.linenums li {
     line-height: 20px;
     text-shadow: 0 1px 0 #fff;
 }
+
+body{
+    overflow-y: scroll;
+}
