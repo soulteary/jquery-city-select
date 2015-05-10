@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="assets/css/bootstrap.min.css"/>
     <script src="assets/js/data.js"></script>
     <script src="assets/js/require.min.js"></script>
-    <script src="assets/js/jquery-1.11.3.min.js"></script>
     <script src="assets/js/prettify.js"></script>
 </head>
 <body>
@@ -90,6 +89,7 @@
 // 根据自己情况配置loader config
 requirejs({
     paths: {
+        "jquery"     : "./assets/js/jquery-1.11.3.min",
         "city.select": "./dist/jquery.city.select.min"
     }
 });
