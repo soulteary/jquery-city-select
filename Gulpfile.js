@@ -6,7 +6,6 @@ var amdclean = require('gulp-amdclean');
 var concat = require('gulp-concat');
 var fs = require('fs');
 var uglyfly = require('gulp-uglyfly');
-var rename = require("gulp-rename");
 var rm = require('gulp-rm');
 var replace = require('gulp-replace');
 var wrap = require("gulp-wrap");
@@ -39,20 +38,9 @@ gulp.task("scripts:build", ["scripts:make-amd"], function () {
         .pipe(gulp.dest("./dist"));
 });
 
-gulp.task("test:sync", ["scripts:build"], function () {
-    return gulp.src("./dist/jquery.city.select.min.js")
-        .pipe(gulp.dest("./tests/dist"));
-});
-
-gulp.task("demo:sync", ["test:sync"], function () {
+gulp.task("demo:sync", ["scripts:build"], function () {
     return gulp.src("./dist/jquery.city.select.min.js")
         .pipe(gulp.dest("./demo/dist"));
-});
-
-gulp.task("test:mocha", ["test:sync"], function () {
-    return gulp
-        .src("./tests/phantomjs.html")
-        .pipe(mochaPhantomJS());
 });
 
 gulp.task("clean:tmp", ["demo:sync"], function () {
