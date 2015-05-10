@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="assets/css/bootstrap.min.css"/>
     <script src="assets/js/require.min.js"></script>
     <script src="assets/js/jquery-1.11.3.min.js"></script>
-    <script src="assets/dist/jquery.city.select.js"></script>
     <script src="assets/js/prettify.js"></script>
 </head>
 <body>
@@ -684,9 +683,13 @@ $('#pre-all').citylist({data:data,id:'id',children:'cities',name:'name',metaTag:
         }
     ];
 
-    require(['jquery', 'jquery.city.select'], function ($) {
-        console.log($)
-        return true;
+    requirejs({
+        paths: {
+            "city.select": "./dist/jquery.city.select.min"
+        }
+    });
+
+    require(['city.select'], function ($) {
         $(function () {
             //插件调用代码
             $('#province, #city').citylist({data: data, id: 'id', children: 'cities', name: 'name', metaTag: 'name'});

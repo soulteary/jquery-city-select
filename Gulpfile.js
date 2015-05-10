@@ -1,37 +1,57 @@
+'use strict';
+
 var gulp = require('gulp');
 
-var amdOptimize = require("amd-optimize");
+var amdclean = require('gulp-amdclean');
 var concat = require('gulp-concat');
-var path = require('path');
+var fs = require('fs');
+var uglyfly = require('gulp-uglyfly');
 var rename = require("gulp-rename");
-var dirSync = require('gulp-directory-sync');
-var uglify = require('gulp-uglify');
+var rm = require('gulp-rm');
+var replace = require('gulp-replace');
+var wrap = require("gulp-wrap");
+var rjs = require('gulp-requirejs');
 
-gulp.task('default', ['build']);
-gulp.task("build", ["script:build"], function () {});
-gulp.task("script:build", ["scripts:minify"], function () {});
 
-// 编译脚本
-gulp.task("scripts:compile", function () {
-    return gulp.src("src/jquery.city.select.js")
-        .pipe(amdOptimize("jquery.city.select", {wrapShim: true}))
+gulp.task("default", ["demo:sync"], function () {});
+
+gulp.task("scripts:make-amd", function () {
+    return gulp.src("./src/jquery.city.select.js")
+        .pipe(rjs({
+            name   : "jquery.city.select",
+            baseUrl: "./src",
+            out    : "jquery.city.select.js",
+            shim   : {"jQuery": "jquery"},
+            paths  : {"jquery": "empty:"}
+        }))
+        .pipe(gulp.dest("./tmp"));
+});
+
+gulp.task("scripts:build", ["scripts:make-amd"], function () {
+    return gulp.src("./tmp/jquery.city.select.js")
+        .pipe(amdclean.gulp({"prefixMode": "standard"}))
+        .pipe(replace(/^;\(function\(\) \{\n/, ""))
+        .pipe(replace(/\n\}\(\)\);$/, ""))
+        .pipe(wrap(fs.readFileSync("./.build-wrapper.tpl", "utf8")))
         .pipe(concat("jquery.city.select.js"))
-        .pipe(gulp.dest("dist"));
-});
-
-// 压缩脚本
-gulp.task("scripts:minify", ["scripts:compile"], function () {
-    return gulp.src("dist/jquery.city.select.js")
+        .pipe(gulp.dest("./dist"))
+        .pipe(uglyfly())
         .pipe(concat("jquery.city.select.min.js"))
-        .pipe(uglify())
-        .pipe(gulp.dest("dist"));
+        .pipe(gulp.dest("./dist"));
 });
 
-// 同步输出文件到Demo目录
-gulp.task("demo:sync", function () {
-    gulp.src('')
-        .pipe(dirSync("dist", "demo/assets/dist", {printSummary: true}))
-        .on('error', function (e) {
-            console.log(e);
-        });
+gulp.task("test:sync", ["scripts:build"], function () {
+    return gulp.src("./dist/jquery.city.select.min.js")
+        .pipe(gulp.dest("./tests/dist"));
+});
+
+gulp.task("demo:sync", ["test:sync"], function () {
+    return gulp.src("./dist/jquery.city.select.min.js")
+        .pipe(gulp.dest("./demo/dist"));
+});
+
+gulp.task("test:mocha", ["test:sync"], function () {
+    return gulp
+        .src("./tests/phantomjs.html")
+        .pipe(mochaPhantomJS());
 });

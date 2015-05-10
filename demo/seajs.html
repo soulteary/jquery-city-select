@@ -684,7 +684,13 @@ $('#pre-all').citylist({data:data,id:'id',children:'cities',name:'name',metaTag:
         }
     ];
 
-    seajs.use(['jquery', 'jquery.city.select'], function ($) {
+    seajs.config({
+        alias: {
+            "city.select": "./dist/jquery.city.select.min"
+        }
+    });
+
+    seajs.use(['city.select'], function ($) {
         $(function () {
             //插件调用代码
             $('#province, #city').citylist({data: data, id: 'id', children: 'cities', name: 'name', metaTag: 'name'});
