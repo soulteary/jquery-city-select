@@ -40,7 +40,7 @@ gulp.task("scripts:build", ["scripts:make-amd"], function () {
         .pipe(gulp.dest("./dist"));
 });
 
-gulp.task("scripts:lint", ["scripts:build"], function(){
+gulp.task("scripts:lint", ["scripts:build"], function () {
     return lintAll("./src/**/*.js");
 });
 
