@@ -61,4 +61,7 @@ $('#pre-all').citylist({
 
 ## 演示地址
 
-[演示地址](http://thecdn.sinaapp.com/page/demo/jq-select/)
+- [演示地址](http://soulteary.github.io/jquery-city-select/)
+- [页面中直接引用](http://soulteary.github.io/jquery-city-select/demo/index.html)
+- [作为AMD模块使用](http://soulteary.github.io/jquery-city-select/requirejs.html)
+- [作为CMD模块使用](http://soulteary.github.io/jquery-city-select/seajs.html)
