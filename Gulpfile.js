@@ -10,6 +10,8 @@ var rm = require('gulp-rm');
 var replace = require('gulp-replace');
 var wrap = require("gulp-wrap");
 var rjs = require('gulp-requirejs');
+var lintAll = require('gulp-lint-everything')({jshint: ".jshintrc"});
+
 
 gulp.task("default", ["clean:tmp"], function () {});
 
@@ -38,7 +40,11 @@ gulp.task("scripts:build", ["scripts:make-amd"], function () {
         .pipe(gulp.dest("./dist"));
 });
 
-gulp.task("demo:sync", ["scripts:build"], function () {
+gulp.task("scripts:lint", ["scripts:build"], function(){
+    return lintAll("./src/**/*.js");
+});
+
+gulp.task("demo:sync", ["scripts:lint"], function () {
     return gulp.src("./dist/jquery.city.select.min.js")
         .pipe(gulp.dest("./demo/dist"));
 });

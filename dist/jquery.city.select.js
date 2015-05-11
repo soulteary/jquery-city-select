@@ -20,6 +20,7 @@
  *
  *  @author soulteary@qq.com
  */
+/* global define */
 var cityselect;
 cityselect = function ($) {
   $.fn.extend({
@@ -41,28 +42,21 @@ cityselect = function ($) {
       }, params);
       var target = $(this);
       var hasSelected = ' selected="selected"';
-      switch (target.length) {
-      case 1:
-        singleBox(target, params);
-        break;
-      case 2:
-        multipleBox(target, params);
-        break;
-      default:
-        // 参数不存在或者不匹配可接受数量时
-        return this;
-      }
       function singleBox(target, params) {
         var all = target;
         var data = params.data;
         var html = [];
         for (var oo in data) {
-          html.push('<option ' + params.metaTag + '="' + data[oo][params.id] + '"' + (params.selected && params.selected == data[oo][params.id] ? hasSelected : '') + '>' + data[oo][params.name] + '</option>');
-          for (var xx in data[oo][params.children]) {
-            if (params.idVal) {
-              html.push('<option ' + params.metaTag + '="' + data[oo][params.children][xx][params.id] + '" value="' + data[oo][params.children][xx][params.name] + '"' + (params.selected && params.selected == data[oo][params.children][xx][params.id] ? hasSelected : '') + '>' + data[oo][params.children][xx][params.name] + '</option>');
-            } else {
-              html.push('<option ' + params.metaTag + '="' + data[oo][params.children][xx][params.id] + '" value="' + data[oo][params.children][xx][params.id] + '"' + (params.selected && params.selected == data[oo][params.children][xx][params.id] ? hasSelected : '') + '>' + data[oo][params.children][xx][params.name] + '</option>');
+          if (data.hasOwnProperty(oo)) {
+            html.push('<option ' + params.metaTag + '="' + data[oo][params.id] + '"' + (params.selected && params.selected == data[oo][params.id] ? hasSelected : '') + '>' + data[oo][params.name] + '</option>');
+            for (var xx in data[oo][params.children]) {
+              if (data[oo][params.children].hasOwnProperty(xx)) {
+                if (params.idVal) {
+                  html.push('<option ' + params.metaTag + '="' + data[oo][params.children][xx][params.id] + '" value="' + data[oo][params.children][xx][params.name] + '"' + (params.selected && params.selected == data[oo][params.children][xx][params.id] ? hasSelected : '') + '>' + data[oo][params.children][xx][params.name] + '</option>');
+                } else {
+                  html.push('<option ' + params.metaTag + '="' + data[oo][params.children][xx][params.id] + '" value="' + data[oo][params.children][xx][params.id] + '"' + (params.selected && params.selected == data[oo][params.children][xx][params.id] ? hasSelected : '') + '>' + data[oo][params.children][xx][params.name] + '</option>');
+                }
+              }
             }
           }
         }
@@ -75,11 +69,13 @@ cityselect = function ($) {
         var city = target.eq(1);
         var html = [], oItem;
         for (var item in params.data) {
-          oItem = params.data[item];
-          if (params.idVal) {
-            html.push('<option ' + params.metaTag + '="' + oItem[params.id] + '" value="' + oItem[params.id] + '"' + (params.selected && params.selected[0] == oItem[params.id] ? hasSelected : '') + '>' + oItem[params.name] + '</option>');
-          } else {
-            html.push('<option ' + params.metaTag + '="' + oItem[params.id] + '" value="' + oItem[params.name] + '"' + (params.selected && params.selected[0] == oItem[params.id] ? hasSelected : '') + '>' + oItem[params.name] + '</option>');
+          if (params.data.hasOwnProperty(item)) {
+            oItem = params.data[item];
+            if (params.idVal) {
+              html.push('<option ' + params.metaTag + '="' + oItem[params.id] + '" value="' + oItem[params.id] + '"' + (params.selected && params.selected[0] == oItem[params.id] ? hasSelected : '') + '>' + oItem[params.name] + '</option>');
+            } else {
+              html.push('<option ' + params.metaTag + '="' + oItem[params.id] + '" value="' + oItem[params.name] + '"' + (params.selected && params.selected[0] == oItem[params.id] ? hasSelected : '') + '>' + oItem[params.name] + '</option>');
+            }
           }
         }
         html = html.join('');
@@ -90,21 +86,26 @@ cityselect = function ($) {
           var curSelect = $(this).val();
           provinces.each(function (k, v) {
             if ($(v).val() == curSelect) {
+              /*jshint immed: true */
               return function (v) {
                 var extra = $(v).attr(params.metaTag);
                 var html = [], oItem;
                 for (var item in params.data) {
-                  oItem = params.data[item];
-                  if (oItem[params.id] == extra && oItem[params.children]) {
-                    oItem = oItem[params.children];
-                    for (var sItem in oItem) {
-                      if (params.idVal) {
-                        html.push('<option ' + params.metaTag + '="' + oItem[sItem][params.id] + '" value="' + oItem[sItem][params.id] + '"' + (params.selected && params.selected[1] == oItem[sItem][params.id] ? hasSelected : '') + '>' + oItem[sItem][params.name] + '</option>');
-                      } else {
-                        html.push('<option ' + params.metaTag + '="' + oItem[sItem][params.id] + '" value="' + oItem[sItem][params.name] + '"' + (params.selected && params.selected[1] == oItem[sItem][params.id] ? hasSelected : '') + '>' + oItem[sItem][params.name] + '</option>');
+                  if (params.data.hasOwnProperty(item)) {
+                    oItem = params.data[item];
+                    if (oItem[params.id] == extra && oItem[params.children]) {
+                      oItem = oItem[params.children];
+                      for (var sItem in oItem) {
+                        if (oItem.hasOwnProperty(sItem)) {
+                          if (params.idVal) {
+                            html.push('<option ' + params.metaTag + '="' + oItem[sItem][params.id] + '" value="' + oItem[sItem][params.id] + '"' + (params.selected && params.selected[1] == oItem[sItem][params.id] ? hasSelected : '') + '>' + oItem[sItem][params.name] + '</option>');
+                          } else {
+                            html.push('<option ' + params.metaTag + '="' + oItem[sItem][params.id] + '" value="' + oItem[sItem][params.name] + '"' + (params.selected && params.selected[1] == oItem[sItem][params.id] ? hasSelected : '') + '>' + oItem[sItem][params.name] + '</option>');
+                          }
+                        }
                       }
+                      break;
                     }
-                    break;
                   }
                 }
                 html = html.join('');
@@ -114,6 +115,17 @@ cityselect = function ($) {
             }
           });
         }).trigger('change');
+      }
+      switch (target.length) {
+      case 1:
+        singleBox(target, params);
+        break;
+      case 2:
+        multipleBox(target, params);
+        break;
+      default:
+        // 参数不存在或者不匹配可接受数量时
+        return this;
       }
       return this;
     }
