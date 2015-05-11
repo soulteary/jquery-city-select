@@ -19,28 +19,79 @@
     </section>
 
     <section class="main-content">
-      <h1>
-<a id="插件说明" class="anchor" href="#%E6%8F%92%E4%BB%B6%E8%AF%B4%E6%98%8E" aria-hidden="true"><span class="octicon octicon-link"></span></a>插件说明</h1>
+      <h2>
+<a id="插件说明" class="anchor" href="#%E6%8F%92%E4%BB%B6%E8%AF%B4%E6%98%8E" aria-hidden="true"><span class="octicon octicon-link"></span></a>插件说明</h2>
 
-<pre><code>一个简单的jQuery省市联动插件。
+<pre><code>一个简单的jQuery省市联动插件，支持AMD/CMD方式调用，当然，也支持直接引用。
 </code></pre>
 
-<h1>
-<a id="插件使用" class="anchor" href="#%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8" aria-hidden="true"><span class="octicon octicon-link"></span></a>插件使用</h1>
+<h2>
+<a id="下载地址" class="anchor" href="#%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80" aria-hidden="true"><span class="octicon octicon-link"></span></a>下载地址</h2>
 
-<pre><code>//默认有两个下拉框的时候
-$('#province, #city').citylist({data:data, id:'id', children:'citys',name:'name',metaTag:'name'});
-//只有一个下拉框的时候
-$('#all').citylist({data:data, id:'id', children:'citys',name:'name',metaTag:'name'});
-//有默认预选城市的时候，且有两个下拉框
-$('#pre-province, #pre-city').citylist({data:data, id:'id', children:'citys',name:'name',metaTag:'name',selected:[14,1401]});
-//有默认预选城市的时候，且只有一个下拉框
-$('#pre-all').citylist({data:data, id:'id', children:'citys',name:'name',metaTag:'name',idVal:true,selected:1401});
+<p><a href="https://github.com/soulteary/jquery-city-select/releases">Release</a></p>
+
+<h2>
+<a id="插件使用" class="anchor" href="#%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8" aria-hidden="true"><span class="octicon octicon-link"></span></a>插件使用</h2>
+
+<ul>
+<li>默认有两个下拉框的时候</li>
+</ul>
+
+<pre><code>$('#province, #city').citylist({
+    data    : data,
+    id      : 'id',
+    children: 'cities',
+    name    : 'name',
+    metaTag : 'name'
+});
 </code></pre>
 
-<h1>
-<a id="演示地址" class="anchor" href="#%E6%BC%94%E7%A4%BA%E5%9C%B0%E5%9D%80" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="http://thecdn.sinaapp.com/page/demo/jq-select/">演示地址</a>
-</h1>
+<ul>
+<li>只有一个下拉框的时候</li>
+</ul>
+
+<pre><code>$('#all').citylist({
+    data    : data,
+    id      : 'id',
+    children: 'cities',
+    name    : 'name',
+    metaTag : 'name'
+});
+</code></pre>
+
+<ul>
+<li>有默认预选城市的时候，且有两个下拉框</li>
+</ul>
+
+<pre><code>$('#pre-province, #pre-city').citylist({
+    data    : data,
+    id      : 'id',
+    children: 'cities',
+    name    : 'name',
+    metaTag : 'name',
+    selected: [14, 1401]
+});
+</code></pre>
+
+<ul>
+<li>有默认预选城市的时候，且只有一个下拉框</li>
+</ul>
+
+<pre><code>$('#pre-all').citylist({
+    data    : data,
+    id      : 'id',
+    children: 'cities',
+    name    : 'name',
+    metaTag : 'name',
+    idVal   : true,
+    selected: 1401
+});
+</code></pre>
+
+<h2>
+<a id="演示地址" class="anchor" href="#%E6%BC%94%E7%A4%BA%E5%9C%B0%E5%9D%80" aria-hidden="true"><span class="octicon octicon-link"></span></a>演示地址</h2>
+
+<p><a href="http://thecdn.sinaapp.com/page/demo/jq-select/">演示地址</a></p>
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/soulteary/jquery-city-select">jQuery City Select</a> is maintained by <a href="https://github.com/soulteary">soulteary</a>.</span>
