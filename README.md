@@ -1,5 +1,9 @@
 ## 插件说明
 
+[![Build Status](https://travis-ci.org/soulteary/jquery-city-select.svg)](https://travis-ci.org/soulteary/jquery-city-select)
+[![Dependency Status](https://david-dm.org/soulteary/jquery-city-select.svg)](https://david-dm.org/soulteary/jquery-city-select)
+[![devDependency Status](https://david-dm.org/soulteary/jquery-city-select/dev-status.svg)](https://david-dm.org/soulteary/jquery-city-select#info=devDependencies)
+
     一个简单的jQuery省市联动插件，支持AMD/CMD方式调用，当然，也支持直接引用。
 
 ## 下载地址

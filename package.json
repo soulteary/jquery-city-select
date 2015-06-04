@@ -21,8 +21,8 @@
   },
   "homepage": "https://github.com/soulteary/jquery-city-select",
   "devDependencies": {
-    "gulp": "^3.8.11",
-    "gulp-amdclean": "^1.0.1",
+    "gulp": "^3.9.0",
+    "gulp-amdclean": "^1.1.1",
     "gulp-concat": "^2.5.2",
     "gulp-less": "^3.0.3",
     "gulp-lint-everything": "^0.3.2",
