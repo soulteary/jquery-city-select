@@ -4,7 +4,7 @@
   "description": "A simple city select plugin for jquery.",
   "main": "Gulpfile.js",
   "scripts": {
-    "test": "gulp && gulp test:mocha"
+    "test": "gulp"
   },
   "repository": {
     "type": "git",
